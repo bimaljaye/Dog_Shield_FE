@@ -1,0 +1,11 @@
+// This is a placeholder file for the TensorFlow Lite model
+// In a real application, this would be a compiled .tflite model file
+// 
+// To use an actual TFLite model:
+// 1. Train your model using TensorFlow
+// 2. Convert it to TFLite format
+// 3. Copy the .tflite file to this location
+// 4. Update the code in the app to use this model
+//
+// For rabies detection, you would likely use a classification or object detection model
+// trained on images of dogs with and without rabies symptoms 

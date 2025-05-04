@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "112237766772",
+    "project_id": "dog-shield",
+    "storage_bucket": "dog-shield.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112237766772:android:217e6da270520acc0e0921",
+        "android_client_info": {
+          "package_name": "com.example.dogshield_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0Uy1guyt7FmNJG915mBtX9Cni7FY2MoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
