@@ -6,7 +6,13 @@ import 'package:dogshield_ai/presentation/screens/auth/login_screen.dart';
 import 'package:dogshield_ai/presentation/screens/auth/register_screen.dart';
 import 'package:dogshield_ai/presentation/screens/dashboard/home_screen.dart';
 import 'package:dogshield_ai/presentation/screens/pet_profile/add_pet_screen.dart';
+import 'package:dogshield_ai/presentation/screens/pet_profile/pet_profile_screen.dart';
+import 'package:dogshield_ai/presentation/screens/pet_profile/pets_screen.dart';
+import 'package:dogshield_ai/presentation/screens/reminders/reminders_screen.dart';
+import 'package:dogshield_ai/presentation/screens/reminders/add_reminder_screen.dart';
+import 'package:dogshield_ai/presentation/screens/profile/profile_screen.dart';
 import 'package:dogshield_ai/presentation/screens/ai_detection/ai_detection_screen.dart';
+import 'package:dogshield_ai/data/models/pet_model.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -25,37 +31,26 @@ class AppRouter {
         
       case AppConstants.aiDetectionRoute:
         return MaterialPageRoute(builder: (_) => const AIDetectionScreen());
-        
-      // TODO: Add other routes as they are implemented
+      
       case AppConstants.petProfileRoute:
-        // final pet = settings.arguments as Map<String, dynamic>;
+        final pet = settings.arguments as Pet;
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            appBar: AppBar(title: const Text('Pet Profile')),
-            body: const Center(
-              child: Text('Pet Profile Screen - To be implemented'),
-            ),
-          ),
+          builder: (_) => PetProfileScreen(pet: pet),
         );
+      
+      case AppConstants.petsRoute:
+        return MaterialPageRoute(builder: (_) => const PetsScreen());
+        
+      case AppConstants.profileRoute:
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
         
       case AppConstants.reminderRoute:
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            appBar: AppBar(title: const Text('Reminders')),
-            body: const Center(
-              child: Text('Reminders Screen - To be implemented'),
-            ),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => const RemindersScreen());
         
       case AppConstants.addReminderRoute:
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            appBar: AppBar(title: const Text('Add Reminder')),
-            body: const Center(
-              child: Text('Add Reminder Screen - To be implemented'),
-            ),
-          ),
+          builder: (_) => AddReminderScreen(args: args),
         );
         
       case AppConstants.detectionHistoryRoute:

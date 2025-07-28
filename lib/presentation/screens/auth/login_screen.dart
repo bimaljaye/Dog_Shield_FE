@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dogshield_ai/core/constants/app_constants.dart';
 import 'package:dogshield_ai/core/constants/app_theme.dart';
+import 'package:dogshield_ai/data/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
     _passwordController.dispose();
     super.dispose();
   }
-
   Future<void> _login() async {
     if (!_formKey.currentState!.validate()) {
       return;
@@ -34,8 +34,12 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      // TODO: Implement Firebase authentication
-      await Future.delayed(const Duration(seconds: 2)); // Simulating network delay
+      // Implement Firebase authentication
+      final authService = AuthService();
+      await authService.signInWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text,
+      );
       
       if (mounted) {
         // Navigate to home screen

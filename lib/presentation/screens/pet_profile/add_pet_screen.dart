@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:dogshield_ai/core/constants/app_constants.dart';
 import 'package:dogshield_ai/core/constants/app_theme.dart';
+import 'package:dogshield_ai/data/services/pet_service.dart';
 
 class AddPetScreen extends StatefulWidget {
   const AddPetScreen({super.key});
@@ -17,6 +18,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
   final _breedController = TextEditingController();
   final _ageController = TextEditingController();
   final _weightController = TextEditingController();
+  final _petService = PetService();
   
   String _gender = 'Male';
   DateTime? _dateOfBirth;
@@ -121,10 +123,24 @@ class _AddPetScreenState extends State<AddPetScreen> {
     });
     
     try {
-      // TODO: Implement pet data saving to Firebase
-      await Future.delayed(const Duration(seconds: 2)); // Simulating network delay
+      // Use the PetService to save the pet to Firebase
+      await _petService.addPet(
+        name: _nameController.text.trim(),
+        breed: _breedController.text.trim(),
+        dateOfBirth: _dateOfBirth ?? DateTime.now(),
+        gender: _gender,
+        isNeutered: _isNeutered,
+        weight: double.parse(_weightController.text),
+        image: _petImage,
+      );
       
       if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Pet added successfully'),
+            backgroundColor: Colors.green,
+          ),
+        );
         // Navigate back to home screen
         Navigator.pushReplacementNamed(context, AppConstants.homeRoute);
       }

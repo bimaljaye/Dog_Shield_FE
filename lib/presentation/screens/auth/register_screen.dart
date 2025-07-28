@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dogshield_ai/core/constants/app_constants.dart';
 import 'package:dogshield_ai/core/constants/app_theme.dart';
+import 'package:dogshield_ai/data/services/auth_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -49,8 +50,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
 
     try {
-      // TODO: Implement Firebase registration
-      await Future.delayed(const Duration(seconds: 2)); // Simulating network delay
+      // Initialize auth service
+      final authService = AuthService();
+      
+      // Register with Firebase
+      await authService.registerWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text,
+        _nameController.text.trim(),
+      );
       
       if (mounted) {
         // Navigate to pet registration or home screen

@@ -3,8 +3,7 @@ class AppConstants {
   static const String appName = 'DogShield AI';
   static const String appVersion = '1.0.0';
   static const String appDescription = 'AI-driven mobile app for pet health management and rabies detection in dogs';
-  
-  // Navigation routes
+    // Navigation routes
   static const String splashRoute = '/splash';
   static const String onboardingRoute = '/onboarding';
   static const String loginRoute = '/login';
@@ -12,6 +11,7 @@ class AppConstants {
   static const String forgotPasswordRoute = '/forgot-password';
   static const String homeRoute = '/home';
   static const String profileRoute = '/profile';
+  static const String petsRoute = '/pets';
   static const String petProfileRoute = '/pet-profile';
   static const String addPetRoute = '/add-pet';
   static const String editPetRoute = '/edit-pet';
